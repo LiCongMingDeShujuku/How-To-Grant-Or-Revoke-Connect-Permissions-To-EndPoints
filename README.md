@@ -87,11 +87,13 @@ Alternatively; you could use the GUI to GRANT CONNECTION permissions to the Endp
  
 7. Select ‘Object Types’.
 7. 选择“Object Types”。
+
 ![#](images/08-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.png?raw=true "#")
 
  
 8. Check ‘Endpoints’ and click ‘OK’.
 8. 查询“Endpoints”并单击“OK”。
+
 ![#](images/09-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.png?raw=true "#")
  
 9. Click ‘Browse’.
