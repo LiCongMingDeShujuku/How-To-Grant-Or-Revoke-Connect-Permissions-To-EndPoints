@@ -41,7 +41,7 @@ create login [EndpointOwner] with password=’MyComplexPassword’, default_data
 ```
 
 
-![#](images/01-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.pngraw=true "#")
+![#](images/01-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.png?raw=true "#")
  
 We are also going to create an SQL account that the application will use to connect using the Endpoint. We are calling it the EndpointUser. This is the same process as above.
 create login [EndpointUser] with password=’MyComplexPassword’, default_database=[master], default_language=[us_english], check_expiration=off, check_policy=off;
@@ -51,13 +51,13 @@ You’ll then login to Management Studio using the EndpointOwner account, and cr
 use master; grant take ownership on endpoint::MyEndpoint to MyEndpointOwnerAccount with grant option;
 然后，你将使用EndpointOwner帐户登录Management Studio，并创建（或删除并重新创建）你的Endpoint（如果已存在）。这当然会将Endpoint Owner设置为新的EndpointOwner SQL登录。你当然也可以在ENDPO上运行语句GRANT TAKE OWNERSHIP，只需指定新的所有者帐户名称即可。我可以向你展示创建Endpoint的语句，但这更多的是使用GRANT或REVOKE管理权限，而不是创建Endpoint本身。
 
-![#](images/02-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.pngraw=true "#") 
+![#](images/02-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.png?raw=true "#") 
 
 Next we’ll be granting the CONNECT permission to the Endpoint. In this example we’ll be using the Endpoint ‘ConfigMgrEndpoint’. By the way; you’ll need the CONTROL permission on the endpoint or ALTER ANY ENDPOINT permission just to run the GRANT statement against an Endpoint. If you’re the DBA; you’ll usually have the rights to perform this action, but if you don’t, this is just something to keep in mind in case you run into trouble running grants against other accounts specifically for Endpoints.
 接下来，我们将授予Endpoint的CONNECT权限。在这个例子中，我们将使用Endpoint'ConfigMgrEndpoint'。另外，你需要Endpoint上的CONTROL权限或ALTER ANY ENDPOINT权限才能对Endpoint运行GRANT语句。如果你是DBA，通常有权执行此操作，但如果你不这样做，那么在遇到专门针对Endpoint的其他帐户运行授权时遇到问题时，请注意这一点。
 use [master]; grant connect on endpoint::[ConfigMgrEndpoint] to [EndpointUser];
 
-![#](images/03-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.pngraw=true "#")
+![#](images/03-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.png?raw=true "#")
  
 Alternatively; you could use the GUI to GRANT CONNECTION permissions to the Endpoint on a particular user, but the process as you can see below is riddled with different windows, and prompts, and makes for a complicated process. In the example below we are using the EndpointOwner as the user that the applications will use to connect to SQL Server through the Endpoint.
 另外，你可以使用GUI对特定用户的Endpoint授予CONNECTION权限，但是你可以看到下面的过程充满了不同的窗口和提示，并使其变得很复杂的过程。在下面的示例中，我们使用EndpointOwner作为应用程序将通过Endpoint连接到SQL Server的用户。
@@ -68,61 +68,61 @@ Alternatively; you could use the GUI to GRANT CONNECTION permissions to the Endp
 2.展开安全性
 3.展开登录
 
-![#](images/04-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.pngraw=true "#")
+![#](images/04-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.png?raw=true "#")
  
 4. Double click the user your application will use to connect to the Endpoint. Again in our example we are using the EndpointOwner account.
 4.双击应用程序将用于连接到Endpoint的用户。在我们的示例中，我们再次使用EndpointOwner帐户。
 
-![#](images/05-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.pngraw=true "#")
+![#](images/05-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.png?raw=true "#")
  
 5. Select ‘Securables’ on the left, and ‘Search’ on the right.
 5.选择左侧的“Securables”和右侧的“Search”。
 
-![#](images/06-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.pngraw=true "#")
+![#](images/06-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.png?raw=true "#")
  
 6. Select ‘Specific Objects’, and click ‘OK’.
 6.选择“Specific Objects”，然后单击“OK’”。
 
-![#](images/07-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.pngraw=true "#")
+![#](images/07-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.png?raw=true "#")
  
 7. Select ‘Object Types’.
 7. 选择“Object Types”。
-![#](images/08-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.pngraw=true "#")
+![#](images/08-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.png?raw=true "#")
 
  
 8. Check ‘Endpoints’ and click ‘OK’.
 8. 查询“Endpoints”并单击“OK”。
-![#](images/09-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.pngraw=true "#")
+![#](images/09-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.png?raw=true "#")
  
 9. Click ‘Browse’.
 9.单击“Browse”
 
-![#](images/10-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.pngraw=true "#")
+![#](images/10-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.png?raw=true "#")
  
 10. Select the Endpoint you are granting the CONNECT too, and click ‘OK’. In this example we are using Endpoint [ConfigMgrEndpoint].
 10.选择你正在授予CONNECT的端点，然后单击“OK”。在此示例中，我们使用Endpoint [ConfigMgrEndpoint]。
 
-![#](images/11-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.pngraw=true "#")
+![#](images/11-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.png?raw=true "#")
  
 11. Click ‘OK’.
 11.单击“OK’”。
 
-![#](images/12-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.pngraw=true "#")
+![#](images/12-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.png?raw=true "#")
  
 12. Select the Endpoint form the list, and check ‘Grant’, and click ‘OK’.
 12.从列表中选择Endpoint，然后选中“Grant”，然后单击“OK”。
 
-![#](images/13-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.pngraw=true "#")
+![#](images/13-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.png?raw=true "#")
  
 Suppose you want to REVOKE the CONNECT permissions to the ENDPOINT… Here’s a quick statement to do that instead of using the GUI.
 如果你想REVOKE ENDPOINT的CONNECT权限，这是一个不使用GUI的快速状态，
 
-![#](images/14-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.pngraw=true "#")
+![#](images/14-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.png?raw=true "#")
  
 Removing CONNECT permissions is much easier than adding cause you don’t have to search the different objects. You just need to double click the account in SQL Server, go to Securables, and simply uncheck the GRANT. Here is what you will see when using the GUI to remove the CONNECT permission.
 删除CONNECT权限比添加更容易，因为你不必搜索不同的对象。你只需双击SQL Server中的帐户，转到Securables，然后只需取消选中GRANT即可。以下是使用GUI删除CONNECT权限时将看到的内容。
 
-![#](images/15-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.pngraw=true "#")
+![#](images/15-How-To-Grant-Or-Revoke-Connect-Permissions-To-EndPoints.png?raw=true "#")
  
 Hope this helpful.
 希望这个对你有所帮助。
