@@ -1,8 +1,8 @@
 ![CLEVER DATA GIT REPO](https://raw.githubusercontent.com/LiCongMingDeShujuku/git-resources/master/0-clever-data-github.png "李聪明的数据库")
 
-# POST TITLE
-#### SECONDARY TITLE
-**TIME STAMP**
+# 如何授予或撤消对EndPoints的连接权限
+#### How To Grant Or Revoke Connect Permissions To EndPoints
+**发布-日期: 2015年2月28日 (评论)**
 
 ## Contents
 
